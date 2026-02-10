@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CloApps™ - Loja de Aplicativos IPTV</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Ionicons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="grid-bg"></div>
+    <div class="blob" style="top: 10%; left: 10%"></div>
+    <div
+      class="blob"
+      style="top: 40%; right: 10%; background: var(--secondary-glow)"
+    ></div>
+
+    <header id="header">
+      <div class="container nav-content">
+        <a href="#" class="logo">
+          <div class="logo-icon pulse">
+            <ion-icon
+              name="tv"
+              style="color: white; font-size: 1.5rem"
+            ></ion-icon>
+          </div>
+          <span
+            style="
+              background: linear-gradient(to right, #a78bfa, #22d3ee);
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+            "
+            >CloApps™</span
+          >
+        </a>
+        <nav class="nav-links">
+          <ul>
+            <li><a href="#apps">Aplicativos</a></li>
+            <li><a href="#features">Recursos</a></li>
+            <li><a href="#support">Suporte</a></li>
+          </ul>
+        </nav>
+        <div class="version-badge">
+          <ion-icon name="shield-checkmark"></ion-icon>
+          v2.0
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div class="badge">
+            <ion-icon name="flash" style="color: #a78bfa"></ion-icon>
+            Mais de 600 downloads
+          </div>
+          <h1 class="text-gradient">
+            Aplicativos<br /><span
+              style="
+                background: linear-gradient(to right, #8b5cf6, #06b6d4);
+                -webkit-background-clip: text;
+                background-clip: text;
+              "
+              >IPTV Premium</span
+            >
+          </h1>
+          <p>
+            Baixe os melhores aplicativos de streaming e revenda IPTV. Conteúdo
+            em alta qualidade, suporte 24/7 e atualizações constantes.
+          </p>
+
+          <div class="hero-btns">
+            <button
+              class="btn btn-primary pulse"
+              onclick="
+                document
+                  .getElementById('apps')
+                  .scrollIntoView({ behavior: 'smooth' })
+              "
+            >
+              <ion-icon name="download-outline"></ion-icon> Ver Aplicativos
+            </button>
+            <button class="btn btn-outline">
+              <ion-icon name="lock-closed-outline"></ion-icon> Segurança
+              Garantida
+            </button>
+          </div>
+
+          <div class="stats">
+            <div class="stat-item">
+              <h3 class="text-gradient">600+</h3>
+              <p>Downloads</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="text-gradient">4</h3>
+              <p>Aplicativos</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="text-gradient">99%</h3>
+              <p>Satisfação</p>
+            </div>
+            <div class="stat-item">
+              <h3 class="text-gradient">24/7</h3>
+              <p>Suporte</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Apps Section -->
+      <section id="apps" style="padding: 80px 0">
+        <div class="container">
+          <div class="section-header">
+            <h2>Nossos <span>Aplicativos</span></h2>
+            <p>
+              Escolha o aplicativo ideal para suas necessidades. Todos com
+              suporte profissional e atualizações regulares.
+            </p>
+          </div>
+
+          <div class="apps-grid" id="apps-container">
+            <!-- Apps will be loaded by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section
+        id="features"
+        style="padding: 100px 0; background: rgba(139, 92, 246, 0.02)"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2>Por que escolher a <span>CloApps™</span>?</h2>
+            <p>
+              Oferecemos a melhor experiência em aplicativos de streaming do
+              mercado.
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <ion-icon
+                  name="shield-checkmark"
+                  style="font-size: 1.5rem"
+                ></ion-icon>
+              </div>
+              <h3>Segurança Garantida</h3>
+              <p>Todos os aplicativos são verificados e seguros para uso.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <ion-icon name="rocket" style="font-size: 1.5rem"></ion-icon>
+              </div>
+              <h3>Alta Performance</h3>
+              <p>
+                Aplicativos otimizados para funcionar em qualquer dispositivo.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-wrapper">
+                <ion-icon name="tv" style="font-size: 1.5rem"></ion-icon>
+              </div>
+              <h3>Qualidade 4K</h3>
+              <p>Suporte a conteúdo em HD, Full HD e 4K.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Support Section -->
+      <section id="support" style="padding: 100px 0">
+        <div class="container">
+          <div
+            class="app-card"
+            style="
+              grid-template-columns: 1fr;
+              text-align: center;
+              padding: 4rem;
+              background: linear-gradient(
+                135deg,
+                rgba(139, 92, 246, 0.1),
+                rgba(6, 182, 212, 0.1)
+              );
+              border-color: rgba(139, 92, 246, 0.3);
+              cursor: default;
+            "
+          >
+            <div
+              class="logo-icon animate-float"
+              style="margin: 0 auto 2rem; width: 64px; height: 64px"
+            >
+              <ion-icon name="headset" style="font-size: 2rem"></ion-icon>
+            </div>
+            <h2>Precisa de ajuda?</h2>
+            <p
+              style="
+                max-width: 500px;
+                margin: 1rem auto 2rem;
+                color: var(--muted);
+                font-size: 1.1rem;
+              "
+            >
+              Nossa equipe de suporte está disponível 24 horas por dia, 7 dias
+              por semana para ajudar você.
+            </p>
+            <button
+              class="btn btn-outline"
+              style="border-color: rgba(139, 92, 246, 0.5); color: #c4b5fd"
+            >
+              <ion-icon name="chatbubbles-outline"></ion-icon> Entrar em Contato
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <a href="#" class="logo">
+            <div class="footer-logo-icon">
+              <ion-icon name="tv"></ion-icon>
+            </div>
+            <span style="font-size: 1.25rem">CloApps™</span>
+          </a>
+          <div class="footer-social">
+            <ion-icon name="logo-android"></ion-icon>
+            <ion-icon name="tv-outline"></ion-icon>
+            <ion-icon name="globe-outline"></ion-icon>
+          </div>
+        </div>
+        <p class="copyright">
+          © <span id="year"></span> CloApps™. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Modal for App Details -->
+    <div class="modal-overlay" id="modal">
+      <div id="modal-body">
+        <!-- Content injected by JS -->
+      </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
