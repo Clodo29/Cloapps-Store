@@ -1,5 +1,5 @@
-// App Data based on the original site
-const apps = [
+// Lista de dados dos Aplicativos
+const listaAplicativos = [
   {
     id: "1",
     name: "VU REVENDA",
@@ -73,21 +73,21 @@ const apps = [
     rating: 4.5,
     description: "Seja bem-vindo ao GenialPlay! Acesse nosso player diretamente pelo navegador.",
     screenshots: ["assets/images/genial-logo.jpg"],
-    features: ["Qualidade 4K", "Guia de programação", "Acesso via Navegador"]
+    features: ["Acesso via Navegador", "Sem necessidade de instalação", "Interface Web Amigável"]
   }
 ];
 
-// DOM Elements
+// Elementos do DOM (Document Object Model)
 const header = document.getElementById("header");
 const appsContainer = document.getElementById("apps-container");
 const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
 const yearSpan = document.getElementById("year");
 
-// Set Year
+// Define o ano atual no rodapé
 if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-// Header Scroll Effect
+// Efeito de rolagem do Cabeçalho (Header)
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
     header.classList.add("scrolled");
@@ -96,12 +96,12 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Render Apps
-function renderApps() {
+// Função para renderizar os cards de Aplicativos na tela
+function renderizarAplicativos() {
   if (!appsContainer) return;
-  appsContainer.innerHTML = apps
+  appsContainer.innerHTML = listaAplicativos
     .map((app) => `
-    <div class="app-card" onclick="openModal('${app.id}')">
+    <div class="app-card" onclick="abrirModal('${app.id}')">
       <img src="${app.icon}" alt="${app.name}" class="app-icon">
       
       <div class="app-info">
@@ -115,22 +115,28 @@ function renderApps() {
 
       <div class="app-meta">
         <div class="rating">
-          <ion-icon name="star"></ion-icon>
+          <i data-lucide="star" style="width: 14px; height: 14px; color: #fbbf24; fill: #fbbf24;"></i>
           ${app.rating}
         </div>
         <button class="btn btn-primary" onclick="event.stopPropagation(); window.open('${app.downloadUrl}', '_blank')">
-          <ion-icon name="${app.id === '5' ? 'globe-outline' : 'download-outline'}"></ion-icon> 
+          <i data-lucide="${app.id === '5' ? 'globe' : 'download'}"></i> 
           ${app.id === '5' ? 'Acessar Web' : 'Baixar'}
         </button>
       </div>
     </div>
   `).join("");
+  
+  // Re-inicializa os ícones do Lucide após renderizar o HTML dinâmico
+  if (window.lucide) window.lucide.createIcons();
 }
 
-// Modal Logic
-function openModal(appId) {
-  const app = apps.find((a) => a.id === appId);
-  if (!app) return;
+// Lógica do Modal (Janela flutuante de detalhes)
+function abrirModal(appId) {
+  const app = listaAplicativos.find((a) => a.id === appId);
+  if (!app) {
+      console.error("Aplicativo não encontrado:", appId);
+      return;
+  }
 
   modalBody.innerHTML = `
     <div class="modal-content" onclick="event.stopPropagation()">
@@ -140,7 +146,7 @@ function openModal(appId) {
           <h2 class="modal-title">${app.name}</h2>
           <p class="modal-subtitle">${app.category} • v${app.version}</p>
         </div>
-        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <button class="modal-close" onclick="fecharModal()">&times;</button>
       </div>
 
       <div class="modal-body-scroll">
@@ -158,7 +164,7 @@ function openModal(appId) {
               <div class="modal-features-grid">
                   ${app.features.map(f => `
                   <div class="modal-feature-item">
-                      <ion-icon name="checkmark-circle" class="modal-feature-icon"></ion-icon>
+                      <i data-lucide="check-circle" class="modal-feature-icon" style="width: 18px; height: 18px;"></i>
                       ${f}
                   </div>
                   `).join('')}
@@ -167,25 +173,25 @@ function openModal(appId) {
 
           <div class="modal-stats-grid">
               <div class="stat-box">
-                  <span class="stat-label"><ion-icon name="server-outline"></ion-icon> Tamanho</span>
+                  <span class="stat-label"><i data-lucide="hard-drive" style="width: 14px; height: 14px;"></i> Tamanho</span>
                   <span class="stat-value">${app.size}</span>
               </div>
               <div class="stat-box">
-                  <span class="stat-label"><ion-icon name="key-outline"></ion-icon> PIN</span>
+                  <span class="stat-label"><i data-lucide="key" style="width: 14px; height: 14px;"></i> PIN</span>
                   <span class="stat-value modal-pin-value">${app.pin}</span>
               </div>
               <div class="stat-box">
-                  <span class="stat-label"><ion-icon name="cloud-download-outline"></ion-icon> Downloads</span>
+                  <span class="stat-label"><i data-lucide="download-cloud" style="width: 14px; height: 14px;"></i> Downloads</span>
                   <span class="stat-value">${app.downloads}</span>
               </div>
               <div class="stat-box">
-                  <span class="stat-label"><ion-icon name="star-outline"></ion-icon> Nota</span>
+                  <span class="stat-label"><i data-lucide="star" style="width: 14px; height: 14px;"></i> Nota</span>
                   <span class="stat-value modal-rating-value">${app.rating}</span>
               </div>
           </div>
 
           <button class="modal-action-btn" onclick="window.open('${app.downloadUrl}', '_blank')">
-              <ion-icon name="${app.id === '5' ? 'globe-outline' : 'download'}"></ion-icon>
+              <i data-lucide="${app.id === '5' ? 'globe' : 'download-cloud'}"></i>
               <span>${app.id === '5' ? 'Acessar Agora' : 'Instalar Agora'}</span>
           </button>
       </div>
@@ -194,16 +200,26 @@ function openModal(appId) {
 
   modal.style.display = "flex";
   document.body.style.overflow = "hidden";
+  
+  // Re-inicializa ícones do Lucide no modal
+  if (window.lucide) window.lucide.createIcons();
 }
 
-function closeModal() {
+function fecharModal() {
   modal.style.display = "none";
   document.body.style.overflow = "auto";
 }
 
 window.addEventListener("click", (e) => {
-  if (e.target === modal) closeModal();
+  if (e.target === modal) fecharModal();
 });
 
-// Initialize
-renderApps();
+// Fecha o modal ao pressionar a tecla 'ESC'
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal.style.display === "flex") {
+    fecharModal();
+  }
+});
+
+// Inicializa a aplicação criando os cards na tela
+renderizarAplicativos();

@@ -1,4 +1,4 @@
-/* Design System & Tokens */
+/* Sistema de Design & Variáveis */
 :root {
   --background: #0a0a0f;
   --foreground: #f8fafc;
@@ -27,7 +27,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Scrollbar Styles */
+/* Estilos da Barra de Rolagem */
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -46,7 +46,7 @@ body {
     background: #475569;
 }
 
-/* Base Styles */
+/* Estilos de Base */
 h1, h2, h3 {
   font-weight: 700;
   line-height: 1.2;
@@ -58,7 +58,7 @@ a {
   transition: 0.3s;
 }
 
-/* Utility Classes */
+/* Classes Utilitárias */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -67,6 +67,20 @@ a {
 
 .text-gradient {
   background: linear-gradient(to right, #fff, #ddd6fe, #a5f3fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-text {
+  background: linear-gradient(to right, #a78bfa, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.accent-gradient {
+  background: linear-gradient(to right, #8b5cf6, #06b6d4);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -112,7 +126,7 @@ a {
   color: white;
 }
 
-/* Animations */
+/* Animações */
 @keyframes pulse-glow {
   0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
   70% { box-shadow: 0 0 0 15px rgba(139, 92, 246, 0); }
@@ -132,7 +146,7 @@ a {
   animation: pulse-glow 2s infinite;
 }
 
-/* Grid Background Effect */
+/* Efeito de Fundo em Grade (Grid) */
 .grid-bg {
   position: fixed;
   inset: 0;
@@ -147,14 +161,25 @@ a {
   position: absolute;
   width: 400px;
   height: 400px;
-  background: var(--primary-glow);
-  filter: blur(128px);
   border-radius: 50%;
   z-index: -1;
   opacity: 0.15;
+  filter: blur(128px);
 }
 
-/* Feature Cards */
+.blob-1 {
+  top: 10%;
+  left: 10%;
+  background: var(--primary-glow);
+}
+
+.blob-2 {
+  top: 40%;
+  right: 10%;
+  background: var(--secondary-glow);
+}
+
+/* Cards de Recursos/Vantagens */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -196,7 +221,7 @@ a {
   font-size: 0.95rem;
 }
 
-/* Version Badge */
+/* Badge de Versão */
 .version-badge {
   font-size: 0.8rem;
   background: rgba(139, 92, 246, 0.1);
@@ -213,7 +238,7 @@ a {
   font-size: 1rem;
 }
 
-/* Header */
+/* Cabeçalho (Header) */
 header {
   position: fixed;
   top: 0;
@@ -273,7 +298,7 @@ nav ul li a:hover {
   color: white;
 }
 
-/* Hero Section */
+/* Seção Hero (Apresentação Principal) */
 .hero {
   padding-top: 160px;
   padding-bottom: 80px;
@@ -332,7 +357,7 @@ nav ul li a:hover {
   font-size: 0.9rem;
 }
 
-/* Apps Section */
+/* Seção de Lista de Aplicativos */
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -345,6 +370,18 @@ nav ul li a:hover {
 
 .section-header span {
   color: var(--primary);
+}
+
+.section-padding {
+  padding: 80px 0;
+}
+
+.section-padding-large {
+  padding: 100px 0;
+}
+
+.bg-accent-soft {
+  background: rgba(139, 92, 246, 0.02);
 }
 
 .apps-grid {
@@ -430,7 +467,7 @@ nav ul li a:hover {
   font-size: 0.9rem;
 }
 
-/* Modal System */
+/* Sistema de Modal (Janela flutuante) */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -598,28 +635,42 @@ nav ul li a:hover {
 }
 
 .stat-box {
-    background: rgba(30, 41, 59, 0.5);
-    padding: 0.75rem 0.25rem;
-    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.4);
+    padding: 0.8rem 0.5rem;
+    border-radius: 10px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-2px);
+    background: rgba(30, 41, 59, 0.6);
 }
 
 .stat-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-weight: 500;
 }
 
-.stat-label ion-icon {
-    display: block;
-    margin: 0 auto 0.25rem;
-    font-size: 1.1rem;
+.stat-label i {
+    opacity: 0.8;
 }
 
 .stat-value {
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 800;
     color: white;
+    letter-spacing: 0.5px;
 }
 
 .modal-action-btn {
@@ -646,7 +697,7 @@ nav ul li a:hover {
     filter: brightness(1.1);
 }
 
-/* Footer */
+/* Rodapé (Footer) */
 footer {
   border-top: 1px solid var(--border);
   padding: 4rem 0 2rem;
@@ -683,12 +734,12 @@ footer {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
 
-.footer-logo-icon ion-icon {
+.footer-logo-icon i {
   color: white;
-  font-size: 1rem;
+  display: flex;
 }
 
-/* Responsive */
+/* Responsividade (Ajustes para Celular) */
 @media (max-width: 768px) {
   .hero h1 { font-size: 2.5rem; }
   .stats { grid-template-columns: repeat(2, 1fr); }
@@ -699,4 +750,28 @@ footer {
   .nav-links { display: none; }
   .modal-features-grid { grid-template-columns: 1fr; }
   .modal-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.support-card {
+  grid-template-columns: 1fr;
+  text-align: center;
+  padding: 4rem;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.1),
+    rgba(6, 182, 212, 0.1)
+  );
+  border-color: rgba(139, 92, 246, 0.3);
+  cursor: default;
+}
+
+.support-title {
+  max-width: 500px;
+  margin: 1rem auto 2rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.btn-support {
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  color: #c4b5fd !important;
 }
